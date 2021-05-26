@@ -10,9 +10,9 @@ function App() {
 
   return (
     <Provider store={store}>
-
-      <Pokemones />
-     
+      <div className="container mt-3">
+        <Pokemones />
+      </div>
     </Provider>
   );
 }
