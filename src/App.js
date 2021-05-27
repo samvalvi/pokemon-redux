@@ -22,11 +22,11 @@ function App() {
     fetchData()
   }, []);
 
-  const RutaPrivada = ({componente, path, ...rest}) => {
+  const RutaPrivada = ({component, path, ...rest}) => {
     if(localStorage.getItem('usuario')){
-      const usuario = JSON.parse(localStorage.getItem("usuario"))
-      if(usuario.uid === firebaseUser){
-        return <Router path={path} component={componente} {...rest} />
+      const usuario = JSON.parse(localStorage.getItem('usuario'))
+      if(usuario.uid === firebaseUser.uid){
+        return <Route path={path} component={component} {...rest} />
       }else{
           return <Redirect to="/login" {...rest} />
       }
@@ -39,10 +39,10 @@ function App() {
     <Router>
       <NavBar />
       <Switch>
-        <Route exact={true} path="/" component={Home} />{" "}
-        <RutaPrivada path="/pokemones" component={Pokemones} />{" "}
+        <Route exact path="/" component={Home} />{" "}
+        <RutaPrivada component={Pokemones} path="/pokemones" exact/>{" "}
         <Route path="/login" component={Login} />{" "}
-      </Switch>{" "}
+      </Switch>
     </Router>
   ) : <div><h3 className="text-center mt-3 display-3">Cargando</h3></div>
 }

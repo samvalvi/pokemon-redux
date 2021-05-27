@@ -11,7 +11,7 @@ const NavBar = (props) => {
 
     const cerrarSesion = () => {
         dispatch(logoutAccion())
-        props.history.push('/login')
+        props.history.push("/login")
     }
 
     return (
@@ -35,12 +35,20 @@ const NavBar = (props) => {
                     >
                         Login
                     </NavLink>
+                    <NavLink 
+                        className="btn btn-dark mx-1"
+                        to="/pokemones"
+                        exact
+                        hidden={!activo}
+                    >
+                        Pokemones
+                    </NavLink>
                     <button
                         className="btn btn-dark mx-1"
                         onClick={()=> cerrarSesion()}
                         hidden={!activo}
                     >
-                        cerrar Sesión
+                        Cerrar Sesión
                     </button>
                 </div>
             </div>
